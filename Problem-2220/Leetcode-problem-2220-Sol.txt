@@ -1,0 +1,15 @@
+class Solution {
+    public int minBitFlips(int start, int goal) {
+        int p = start ^ goal;
+        int count = 0;
+        
+        while (p > 0) {
+            if ((p & 1) == 1) {
+                count++;
+            }
+            p >>= 1;
+        }
+        
+        return count;
+    }
+}
