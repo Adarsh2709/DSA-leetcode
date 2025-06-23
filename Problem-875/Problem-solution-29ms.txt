@@ -1,0 +1,26 @@
+class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+        int s = 1;
+        int e = Arrays.stream(piles).max().getAsInt(); 
+        int ans = e;
+
+        while (s <= e) {
+            int mid = s + (e - s) / 2; 
+            int count = 0;
+
+            for (int i = 0; i < piles.length; i++) {
+                count += Math.ceil((double) piles[i] / mid);
+            }
+
+            if (count <= h) {
+                ans = mid;
+                e = mid-1;
+            } else {
+                s = mid + 1;
+            }
+        }
+
+        return ans;
+    }
+}
+In this a thought process can be like we just sort the array using inbuilt sorting method then we initilise the s (start) and e (end) then we make binary search if mid is just equal to h then return it if the result is less than h just add to result and again check in left side of mid then if count is greater then we just check in right side this is so if less than h then if we just divide by a lesser number we get close to our answer same with choosing higher number in right side so this is all my logic that i can think and came up with this.
