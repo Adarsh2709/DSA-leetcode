@@ -1,0 +1,46 @@
+class Solution {
+    public int minDays(int[] bloomDay, int m, int k) {
+        long n = bloomDay.length;
+        if (n < (long) m * k) {
+            return -1;
+        }
+
+        int min = bloomDay[0], max = bloomDay[0];
+        for (int day : bloomDay) {
+            min = Math.min(min, day);
+            max = Math.max(max, day);
+        }
+
+        int left = min, right = max;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (Possible(bloomDay, m, k, mid)) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
+
+    private boolean Possible(int[] bloomDay, int m, int k, int day) {
+        int bouquets = 0, counter = 0;
+
+        for (int bloom : bloomDay) {
+            if (bloom <= day) {
+                counter++;
+                }
+            else {
+                bouquets = bouquets + counter/k; 
+                counter = 0; 
+            }
+        }
+         bouquets = bouquets + counter/k;
+        return bouquets >= m;
+    }
+}
+This was done because we just have to find first the min and max number of element as the before the min element if any flower is bloomed it has not effect and at the instant max is reached we have bloomed all the flower.
+Then we just check the minimum one by using min and  max as left and right.
+And there is condition that if array size is less that m*n then we simply return -1,This is so because if i want to make 3 flower bouquets and there should be 3 basket or say group of it and if the array size is less than m*n i.e 9,
+Then it is not possible to make basket of each with guven number of bouquets.
+This is my approach of thinking or rather say i developed by checking others solution tries.
