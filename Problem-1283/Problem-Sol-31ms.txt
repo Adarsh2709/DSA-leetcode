@@ -1,0 +1,35 @@
+class Solution {
+    public int smallestDivisor(int[] nums, int threshold) {
+        int left = 1;
+        int right = nums[0];
+        for(int i=0; i<nums.length; i++){
+           if(right<nums[i]){
+            right = nums[i];
+           }
+        }
+        int result = right;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            int sum = 0;
+
+            for (int i=0; i<nums.length; i++) {
+                sum += Math.ceil((double) nums[i] / mid);
+            }
+
+            if (sum > threshold) {
+                left = mid + 1;
+            } else {
+                result = mid;
+                right = mid - 1;
+            }
+        }
+
+        return result;
+    }
+}
+This is basically a very simple and logical approach 
+In this i just thought that we just have to divide all the number and then sum upto threshold and we just want smallest number means we just tried all numbers and then check which is just smallest among all.
+Now the solution is very simple we just set first/left = 1 then last/right = max of nums(array) then just find mid then divide it if we got the number sum <= threshold value we just store it and then again check in sub part till mid-1 then if we get more smaller than we just change our previous result or just left it unchanged.
+In this way we can get our desired result easily.
+This is all my thought process and code.
