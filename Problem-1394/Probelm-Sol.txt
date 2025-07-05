@@ -1,0 +1,23 @@
+class Solution {
+    public int findLucky(int[] arr) {
+        int max = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (max < arr[i]) {
+                max = arr[i];
+            }
+        }
+        int[] freq = new int[max + 1];
+        for (int i = 0; i < arr.length; i++) {
+            freq[arr[i]]++;
+        }
+        int result = -1;
+        for (int i = 1; i <= max; i++) {
+            if (freq[i] == i) {
+                result = i;
+            }
+        }
+
+        return result;
+    }
+}
+In this I just find the max of the array and make this as a size of a new array then just add elements according to its frequency then just check if a number is equal to its frequency the just add to the result and thus we got the answer.
