@@ -1,0 +1,48 @@
+class Solution {
+    static int[] merge(int[] arr1, int[] arr2) {
+        int length1 = arr1.length;
+        int length2 = arr2.length;
+        int[] result = new int[length1 + length2];
+        int i = 0;
+        int j = 0; 
+        int k = 0; 
+        while (i < length1 && j < length2) {
+            if (arr1[i] < arr2[j]) {
+                result[k] = arr1[i];
+                i++;
+            } else {
+                result[k] = arr2[j];
+                j++;
+            }
+            k++;
+        }
+        while (i < length1) {
+            result[k] = arr1[i];
+            i++;
+            k++;
+        }
+        while (j < length2) {
+            result[k] = arr2[j];
+            j++;
+            k++;
+        }
+        return result;
+    }
+
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int[] arr = merge(nums1, nums2);
+        int s = 0;
+        int e = arr.length - 1;
+        int mid = s + (e - s) / 2;
+        if ((arr.length & 1) == 1) {
+            return arr[mid];
+        } else {
+            return (arr[mid] + arr[mid + 1]) / 2.0;
+        }
+    }
+}
+
+This is a Hard leetcode problem but its actually very easy to think.
+In this I just merged the two array by using merge function then just return the array to the function from it has been called then,
+I just calculate mid then if length is odd so just mid element of the array is our answer 
+But if it is even then just (mid element and (mid+1) element)/2 is our answer.
