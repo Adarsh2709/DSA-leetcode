@@ -1,0 +1,21 @@
+class Solution {
+    public int matchPlayersAndTrainers(int[] players, int[] trainers) {
+        Arrays.sort(players);
+        Arrays.sort(trainers);
+        int counter = 0;
+        int used = 0;
+        for (int i = 0; i < players.length; i++) {
+            for (int j = used; j < trainers.length; j++) {
+                if (players[i] <= trainers[j]) {
+                    counter++;
+                    used = j + 1;
+                    break;
+                }
+            }
+        }
+        return counter;
+    }
+}
+This is 25ms Solution.
+Just like earlier(26ms solution) I just used two pointer but here i just used a (used) and if we got the smallest number in trainer which is larger than smallest number in player so we now just going to check the other possibilities for the rest of the players in j = used + 1 because if a number is larger than smallest of player so next number in trainer will be greater than the previous number so we can only get the required trainer among the used + 1 to trainer.length;
+This is also a easy and efficient way to solve this kind of problems.  

@@ -1,0 +1,23 @@
+class Solution {
+    public int matchPlayersAndTrainers(int[] players, int[] trainers) {
+        Arrays.sort(players);
+        Arrays.sort(trainers);
+        int i = 0, j = 0, counter = 0;
+        while (i < players.length && j < trainers.length) {
+            if (players[i] <= trainers[j]) {
+                counter++;
+                i++;
+            }
+            j++;
+        }
+        return counter;
+    }
+}
+This is just a standard two pointer question.
+In this i just sort the both array so that minimum of both will be at first so that it become easy to get proper track of pointer without considering more things.
+Now a while loop is there which tells that if any thing (considering Both the array) go beyond limit so just do not run while and return the counter.
+Now counter is initialize with zero(0) and then just increase when it meets the condition if not just pointer of trainer (j) got plus.
+In this way we can get the answer in easy way.
+
+But this solution having 26ms.
+I have solved it in 25ms just check that out too, May be your are also thinking in that way.
