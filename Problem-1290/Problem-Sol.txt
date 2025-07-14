@@ -1,0 +1,28 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public int getDecimalValue(ListNode head) {
+        ListNode temp = head;
+        int sum = 0;
+        while(temp!=null){
+            sum = (sum<<1) | temp.val;
+            temp = temp.next;
+        }
+        return sum;
+    }
+}
+In this we just assign a temp pointer to head as to traverse through the whole list.
+Now i just taken sum = 0;
+Now we just have to travel to last node of the list so I just written a condition,traverse till we get the null so that we can reach the last node.
+Now the main condition is sum<<1 | temp.val as we know that for changing the binary into decimal we just make like 2 to the power of the position * the the bit.
+For eg.100=(2^0*0 + 2^1*0 + 2^2*1 = 4) so in same manner the left shift work it will make 2*num like 5<<1 = 10, 6<<1 = 12 
+like (101 << 1) = 1010(2^0*0 + 2^1*1 + 2^2*0 + 2^3*1 = 10) so it become 10.In same way for other number and taking or will change 0 to 1 if (0,1) is there if (1,1) or (0,0) is there then there is no problem so sum<<1 | temp.val this condition will make sum = our desired answer and we 
+just got the answer.
