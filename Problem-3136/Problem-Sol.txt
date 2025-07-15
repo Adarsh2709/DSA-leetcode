@@ -1,0 +1,33 @@
+class Solution {
+    public boolean isValid(String word) {
+         if (word == null || word.length() < 3) {
+            return false;
+        }
+
+        boolean Vowel = false;
+        boolean Consonant = false;
+
+        for (char a : word.toCharArray()) {
+            if (!Character.isLetterOrDigit(a)) {
+                return false;
+            }
+
+            if (Character.isLetter(a)) {
+                char small_case = Character.toLowerCase(a);
+                if ("aeiou".indexOf(small_case) >= 0) {
+                    Vowel = true;
+                } else {
+                    Consonant = true;
+                }
+            }
+        }
+
+        return Vowel && Consonant;
+    }
+}
+This is very easy question just you need to know the function related to string.
+firstly we check the word length if it is less than 3 or just it is null we will return false.
+Then we set vowel = false
+Then we set consonant = false
+Now we check if a vowel and a consonant we get we made both true as question says atleast 1 vowel and 1 consonant should be there so if we get we can satisfy the condition.
+Then just by this we can get the solution of our question.
