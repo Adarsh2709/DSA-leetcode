@@ -20,4 +20,7 @@ class Solution {
     }
 }
 This is Very easy question related to greedy algorithm.
-In this we just sort the array 
+In this My approach is to just sort the array then check the loop(i.e when it has to be broken/closed) 
+Now if index of any one of the array reached the max limit just come out and return the counter.
+Now counter is variable which will give the count of how many children got cookies that they demand for so in this if any child is not getting desired cookie or cookies in first place so just else part in while will run that make sure that if anything is there for that particular child and if it will not get we just come out of the loop as we have sort the array and if a element do not get its desired element from s array so further element in array g can't get as previous one demand less but it rejected so it will have no option.
+In this way i think and it can be implement in just few steps.
