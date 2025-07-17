@@ -1,0 +1,21 @@
+class Solution {
+    public int arrayPairSum(int[] nums) {
+        Arrays.sort(nums);
+        int p=0;
+        int q = 1;
+        int sum = 0;
+        for(int i=0; i<nums.length; i++){
+            if(p<nums.length && q<nums.length){
+               sum = sum + Math.min(nums[p],nums[q]);
+               p+=2;
+               q+=2;
+            }
+        }
+        return sum;
+    }
+}
+This is a good and easy question.
+In this we just need to get the maximum sum of minimum element of the pair from the given array.
+Now for the ease for further solution we just sort the array(nums) by this we make the smallest in front and largest in last.
+As given, Size is of 2n there it is always even so we just assign a pointer(p) to first element and other pointer(q) and we just check the value of element at p and q and value which is minimum among two is added to a variable sum and we just do this till the end of the loop where q will become > length so we just break the loop and print the sum which is our desired answer.
+It can be done by one pointer too and in that we just add the array[i] to sum and i will be incremented like i+=2 so that will just skip the middle one because we as we sort the array so after adding first element we just need to add 3rd then 5th so odd places has to added so in that way this question can also be solved.
