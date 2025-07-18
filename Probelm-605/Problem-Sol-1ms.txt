@@ -1,0 +1,20 @@
+class Solution {
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+        for (int i = 0; i < flowerbed.length; i++) {
+            if (flowerbed[i] == 0 &&
+                (i == 0 || flowerbed[i - 1] == 0) &&
+                (i == flowerbed.length - 1 || flowerbed[i + 1] == 0)) {
+                flowerbed[i] = 1;
+                n--;
+                if (n == 0){
+                    return true;
+                }
+            }
+        }
+        return n<=0;
+    }
+}
+This is a easy question just need to apply a condition.
+In this we just runs a loop till the length of the flowerbed then in that put a condition that if there is zero so we can plat and ensure that adjacent must have zero and if there is already flower present in either side the flower must not be planted there.
+Now if these condition matches we just make n = n-1 and at last if n == 0 then we just return true.
+By this way this question can be solved.
