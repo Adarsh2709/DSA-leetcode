@@ -1,0 +1,29 @@
+class Solution {
+    public boolean validPalindrome(String s) {
+        int left = 0, right = s.length() - 1;
+
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                return is_Palindrome(s, left + 1, right) || is_Palindrome(s, left, right - 1);
+            }
+            left++;
+            right--;
+        }
+        return true; 
+    }
+     public boolean is_Palindrome(String s, int i, int j) {
+        while (i < j) {
+            if (s.charAt(i) != s.charAt(j)){
+               return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+}
+In this I just used two pointers and recursion.
+Now a left and right is initialized then check if the left and right character is same or not then call a function called is_Palindrome that will check whether it is valid or not as if left+1 work so it will return true and OR(||) is used so if other is false it will return true only or vice verse for right-1 or if both is false then it will return false.
+If it is initially palindrome so is_palindrome will not be called.
+By this way this question can be solved.
+  
