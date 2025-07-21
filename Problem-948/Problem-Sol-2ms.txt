@@ -1,0 +1,32 @@
+class Solution {
+    public int bagOfTokensScore(int[] tokens, int power) {
+        Arrays.sort(tokens);
+        int a = 0, b = tokens.length - 1;
+        int count = 0, count_max = 0;
+
+        while (a <= b) {
+            if (power >= tokens[a]) {
+                power -= tokens[a];
+                a++;
+                count++;
+                count_max = Math.max(count, count_max);
+            } 
+            else if (count > 0) {
+                power += tokens[b];
+                b--;
+                count--;
+            } 
+            else {
+                break;
+            }
+        }
+        return count_max;
+    }
+}
+This is an easy greedy algorithm problem.
+First, I sort the tokens to use the smallest for gaining score and the largest for regaining power.
+I use two pointers which is a from the start and b from the end.
+If I have enough power, I use tokens[a], gain a score, and update the max score.
+If not, but I have some score, I sacrifice one to regain power using tokens[b].
+If neither is possible, I break the loop.
+If all the things remains valid then after that loop will break after a>b then we return the max count;
