@@ -1,0 +1,18 @@
+class Solution {
+    public boolean canJump(int[] nums) {
+        int n = nums.length;
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            if (i > sum){
+                return false;
+            } 
+            sum = Math.max(sum, i + nums[i]);
+        }
+        return true;
+    }
+}
+This is a very easy question based on greedy algorithm.
+My approach is simple just go through the array while tracking how far I can reach using the current element.
+If at any index i,I find that i > maxReach, it means I’m stuck and can’t move forward, so I return false.
+Otherwise, I update maxReach = max(maxReach, i + nums[i]), which tells how far I can currently jump.
+If I complete the loop without getting stuck, it means I can reach the last index, so I return true.
