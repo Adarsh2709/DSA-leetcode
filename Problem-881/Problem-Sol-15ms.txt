@@ -1,0 +1,20 @@
+class Solution {
+    public int numRescueBoats(int[] people, int limit) {
+        Arrays.sort(people);
+        int a = 0, b = people.length-1,counter = 0;
+        while(a<=b){
+            if(people[a]+people[b]<=limit){
+                a++;
+            }
+            b--;
+            counter++;
+        }
+        return counter;
+    }
+}
+This is a simple greedy algorithm problem.
+In this we first sort the array so that I can try pairing the lightest and heaviest person together.
+I use two pointers which is a from the start and b from the end.
+If the sum of their weights is within the limit(i.e less than equal to limit), I can put both in one boat, so I move both pointers.
+Otherwise, only the heavier person goes, so I move b only.
+Then when a and b crosses each other the loop will break and we return the count;
