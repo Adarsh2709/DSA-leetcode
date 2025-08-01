@@ -1,0 +1,17 @@
+class Solution {
+    public int brokenCalc(int startValue, int target) {
+        int count = 0;
+        while(startValue<target){
+            if(target%2==0){
+                target = target/2;
+            }
+            else{
+                target++;
+            }
+            count++;
+        }
+        return count + (startValue-target);
+    }
+}
+In this problem, I just think that if target is even i just divide it by 2 and if it is odd i just make it target = target - 1 so that it become even and put this into loop so that it will simply iterate till target become less than or equal to startvalue then just add their difference(i.e startvalue - target) and add it to count and we got the answer in very easy and simple way.
+ 
