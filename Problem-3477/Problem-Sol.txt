@@ -1,0 +1,23 @@
+class Solution {
+    public int numOfUnplacedFruits(int[] fruits, int[] baskets) {
+        int count = 0;
+        int i = 0, j = 0;
+        while (i < fruits.length) {
+            while (j < baskets.length) {
+                if (baskets[j] != 0 && fruits[i] <= baskets[j]) {
+                    baskets[j] = 0;
+                    count++;
+                    break;
+                }
+                j++;
+            }
+            i++;
+            j = 0;
+        }
+
+        return Math.abs(fruits.length - count);
+    }
+}
+This is very Easy and Simple to implement Code.
+In this I just used a counter variable to get the answer,Now firstly declare a variable i and j and then run a nested loop in which give a condition that basket fruit number should not be zero(read question's parameter for any doubt) and then a condition that the number of fruits is less than capacity in basket and if these both met the condition we just set the basket[j] = 0 and then simply increase the counter and break the loop and simply increment 'i' and run the loop and in last just return the difference between the count and the length of the fruits array this we give us the numbers of how many fruits remains unplaced.
+In this way we can just easily solve the problem.
