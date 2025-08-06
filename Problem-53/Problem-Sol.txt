@@ -1,0 +1,50 @@
+class Solution {
+    public int maxSubArray(int[] nums) {
+        return maxCal(nums, 0, nums.length - 1);
+    }
+
+    public int maxCal(int[] nums, int s, int e) {
+        if (s == e){
+            return nums[s];
+        } 
+
+        int mid = s + (e - s) / 2;
+        int max_left = maxCal(nums, s, mid);
+        int max_right = maxCal(nums, mid + 1, e);
+        int c_sum = maxCSum(nums, s, mid, e);
+
+        if (c_sum >= max_left && c_sum >= max_right) {
+            return c_sum;
+        } else if (max_left >= c_sum && max_left >= max_right) {
+            return max_left;
+        } else {
+            return max_right;
+        }
+    }
+
+    public int maxCSum(int[] nums, int s, int mid, int e) {
+        int left_sum = Integer.MIN_VALUE;
+        int sum = 0;
+        for (int i = mid; i >= s; i--) {
+            sum += nums[i];
+            if (sum > left_sum) {
+                left_sum = sum;
+            }
+        }
+
+        int right_sum = Integer.MIN_VALUE;
+        sum = 0;
+        for (int i = mid + 1; i <= e; i++) {
+            sum += nums[i];
+            if (sum > right_sum) {
+                right_sum = sum;
+            }
+        }
+
+        return left_sum + right_sum;
+    }
+}
+
+In this problem I used divide and conquer technique.
+Now firstly we call a function which gonna take us to the answer,Then we just check the starting and ending index element if both the position points to the same element which that only one element is there so it is our base case so we just return 1 in that case then we make a recursive call to check the left-sum then right-sum then we call a C-sum function so that it will give us the C-sum and lastly we check the all three which one is bigger left,right or center.The one which is bigger among them will be the answer.
+I this way it can be solved and it will take O(n^2) complexity.
