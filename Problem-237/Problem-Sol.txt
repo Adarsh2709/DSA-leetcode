@@ -1,0 +1,18 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public void deleteNode(ListNode node) {
+       node.val = node.next.val;
+       node.next = node.next.next;
+    }
+}
+
+This is very Easy Problem on Linked List
+In this we just need to delete the node by not actually deleting it. In this which value node we have to delete, just assign the next value in it and just made the pointer of it to the further node so that as we copied the value of it in previous node so just pointer should be one value of it.
+In this way we can reassign the value and get the desired output.
