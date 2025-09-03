@@ -1,0 +1,33 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        int count = 0;
+        ListNode temp = head;
+        while (temp != null) {
+            count++;
+            temp = temp.next;
+        }
+        int mid = count / 2; 
+        temp = head;
+        for (int i = 0; i < mid; i++) {
+            temp = temp.next;
+        }
+
+        return temp;
+    }
+}
+
+This is a linked list problem where I need to find the middle node of the list.
+My approach is simple: first, I traverse the list once to count the total number of nodes.
+Then I calculate the middle index as count / 2.
+After that, I traverse the list again until I reach this middle index.
+Finally, I return the node at that position, which is the middle node of the linked list.
