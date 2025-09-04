@@ -1,0 +1,34 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+import java.util.ArrayList;
+import java.util.Collections;
+
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        ArrayList<Integer> list = new ArrayList<>();
+        ListNode temp = head;
+
+        while (temp != null) {
+            list.add(temp.val);
+            temp = temp.next;
+        }
+        ArrayList<Integer> reversed_list = new ArrayList<>(list);
+        Collections.reverse(reversed_list);
+        return list.equals(reversed_list);
+    }
+}
+
+This is a linked list problem where I need to check if the given linked list is a palindrome.
+My approach is brute force: I traverse the list once and store all node values in an ArrayList.
+Then I make a copy of this list, reverse it, and finally check if the original and reversed lists are equal.
+If they match, it means the linked list is a palindrome; otherwise, it’s not.
+
+This is not the most efficient solution since it uses extra space and took around 16ms, but this was the first approach that came to my mind, so I implemented it to get a working solution quickly.
