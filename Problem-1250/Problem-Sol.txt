@@ -1,0 +1,24 @@
+class Solution {
+    public boolean isGoodArray(int[] nums) {
+        int checker = nums[0];
+        for(int i=1 ; i<nums.length; i++){
+            checker = hcf(nums[i],checker);
+            if(checker==1){
+                return true;
+            }
+        }
+        return checker==1;
+    }
+    public int hcf(int i , int checker){
+          if (checker==0) {
+            return Math.abs(i);
+        }
+        return hcf(checker, i%checker);
+    }
+}  
+
+This is a problem where I need to check if an array is a "good array."
+My approach is based on the mathematical fact that an array is good if the greatest common divisor (GCD) of all its elements is 1.
+I start with the first element and then keep updating the GCD with each new element using my helper function hcf.
+If at any point the GCD becomes 1, I can directly return true since that confirms the array is good.
+If I finish the loop without hitting 1, I check the final GCD and return whether it is 1 or not.
