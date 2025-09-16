@@ -1,0 +1,16 @@
+class Solution {
+    public int earliestTime(int[][] tasks) {
+        int min = Integer.MAX_VALUE;
+        for(int i=0; i<tasks.length; i++){
+            for(int j=0; j<tasks[0].length; j++){
+                if(j<tasks[0].length-1){
+                    min = Math.min(min,tasks[i][j]+tasks[i][j+1]);
+                }
+            }
+        }
+        return min;
+    }
+}
+
+In this question we want to give minimum sum in array of arrays and we are given tasks[i] = [si, ti].
+So by observing that we just need to check the minimum of [0,0+0,1] with minimum which is initially infinity if it is i.e sum is less then we just set min and then after that we just run the loop and find the minimum and return it.
