@@ -1,0 +1,26 @@
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+       Arrays.sort(nums);
+       boolean check = false;
+       if(nums.length==1){
+        return false;
+       }
+       for(int i=1; i<nums.length; i++){
+        if(nums[i-1]==nums[i]){
+            return true;
+        }
+        else{
+            check = true;
+        }
+       }
+       if(check){
+        return false;
+       }
+       return true;
+    }
+}
+
+In this we need to check that if there is any number which repeated at least once we required to return true but if not then simply false.
+But we all think first approach as two for loop or two pointers but it is not reliable as we cant handle very large input.
+So I have used sorting as it take O(nlogn) so it can able to handle.
+But more correct and best approach is to use Hash set.
